@@ -18,7 +18,7 @@ function Content() {
           </p>
         </div>
         <div className="flex items-center gap-1  md:px-5 md:w-[100%] md:justify-between ">
-          <button className="bg-[#157a74] rounded-full text-center px-[4em] text-[10px] py-[1em] md:px-[30px] md:py-[11px] text-white md:text-[12px] font-bold">
+          <button className="bg-[#157a74] rounded-full text-center px-[3em] text-[10px] py-[1.5em] md:px-[30px] md:py-[11px] text-white md:text-[12px] font-bold">
             Back this project
           </button>
           <button className="md:bg-[#f5f6f9] flex items-center gap-4  md:pr-[30px] md:rounded-full  text-[#157a74] text-[12px] font-bold">
