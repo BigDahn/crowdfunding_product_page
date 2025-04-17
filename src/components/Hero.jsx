@@ -8,7 +8,7 @@ function Hero() {
       <section className="flex justify-between items-center max-w-6xl px-6 md:max-w-5xl m-auto pt-10">
         <img src="/images/logo.svg" />
 
-        <ul className="font-Commissioner text-white font-normal text-[16px] hidden lg:flex lg:gap-6">
+        <ul className="font-Commissioner text-white font-normal text-[16px] hidden md:flex md:gap-6">
           <li>About</li>
           <li>Discover</li>
           <li>Get Started</li>
