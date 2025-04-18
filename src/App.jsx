@@ -7,20 +7,7 @@ import Content from "./components/Content";
 import Hero from "./components/Hero";
 import Container from "./components/Container";
 
-const mobileImg = "/images/image-hero-mobile.jpg";
-const desktopImg = "/images/image-hero-desktop.jpg";
-
 function App() {
-  const [width] = useWindowSize();
-
-  const [image, setImage] = useState(desktopImg);
-
-  useEffect(() => {
-    if (width < 1000) {
-      setImage(mobileImg);
-    }
-  }, [width]);
-  console.log(image);
   return (
     <div>
       <Hero />

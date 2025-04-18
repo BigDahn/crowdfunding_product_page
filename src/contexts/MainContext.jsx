@@ -6,21 +6,39 @@ const CrowdFunding = createContext();
 const initialState = {
   totalPrice: 89914,
   maxPrice: 100000,
+  name: "",
+  totalBackers: 5007,
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case 1:
+    case "confirm": {
+      console.log(action);
+      return {
+        ...state,
+        totalPrice: action.payload.amount + state.totalPrice,
+        name: action.payload.opens,
+        totalBackers: state.totalBackers++,
+      };
+    }
+    case "clearName": {
+      return {
+        ...state,
+        name: "",
+      };
+    }
   }
 }
 
 function MainContextPage({ children }) {
-  const [{ totalPrice, maxPrice }, dispatch] = useReducer(
+  const [{ totalPrice, maxPrice, name, totalBackers }, dispatch] = useReducer(
     reducer,
     initialState
   );
   return (
-    <CrowdFunding.Provider value={{ maxPrice, totalPrice, dispatch }}>
+    <CrowdFunding.Provider
+      value={{ maxPrice, totalPrice, name, totalBackers, dispatch }}
+    >
       {children}
     </CrowdFunding.Provider>
   );

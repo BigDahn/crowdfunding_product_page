@@ -1,8 +1,13 @@
 import React from "react";
+import Modal from "./Modal";
+import ModalContent from "./ModalContent";
+import ConfirmationBox from "./ConfirmationBox";
+import { useCrowdfund } from "../contexts/MainContext";
 
 function Pledges() {
+  const { dispatch } = useCrowdfund();
   return (
-    <>
+    <Modal>
       <article className="border border-gray-200 rounded-md flex flex-col px-6 py-4 gap-4">
         <div className="flex flex-col gap-2  md:flex-row md:justify-between md:items-center">
           <h3 className="font-bold text-[13px] font-Commissioner">
@@ -22,8 +27,18 @@ function Pledges() {
           <h2 className="font-bold text-[23px] flex gap-1 items-start">
             101 <span className="text-[9px] text-[#9b9b9b] mt-1">left</span>
           </h2>
-          <button className="rounded-full bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]">
+
+          <button
+            onClick={() =>
+              dispatch({
+                type: "confirm",
+                payload: { amount: 25, opens: "reward" },
+              })
+            }
+            className="rounded-full bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]"
+          >
             Select Reward
+            {/*dispatch({ type: "confirm", payload: 25 }) */}
           </button>
         </div>
       </article>
@@ -44,7 +59,16 @@ function Pledges() {
           <h5 className="font-bold text-[23px] flex gap-1 items-start">
             64 <span className="text-[9px] text-[#9b9b9b] mt-1">left</span>
           </h5>
-          <button className="rounded-full bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]">
+          <button
+            button
+            onClick={() =>
+              dispatch({
+                type: "confirm",
+                payload: { amount: 75, opens: "reward" },
+              })
+            }
+            className="rounded-full bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]"
+          >
             Select Reward
           </button>
         </div>
@@ -67,12 +91,18 @@ function Pledges() {
           <h5 className="font-bold text-[23px] text-[#9b9b9b] flex gap-1 items-start">
             0 <span className="text-[9px] text-[#9b9b9b] mt-1">left</span>
           </h5>
-          <button className="rounded-full bg-[#9b9b9b] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]">
+          <button
+            disabled
+            className="rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]"
+          >
             Out of Stock
           </button>
         </div>
       </article>
-    </>
+      <Modal.Window name="reward">
+        <ConfirmationBox />
+      </Modal.Window>
+    </Modal>
   );
 }
 
