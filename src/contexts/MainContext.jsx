@@ -1,5 +1,6 @@
 import { useContext, useReducer } from "react";
 import { createContext } from "react";
+import data from "../data";
 
 const CrowdFunding = createContext();
 
@@ -8,17 +9,48 @@ const initialState = {
   maxPrice: 100000,
   name: "",
   totalBackers: 5007,
+  data: data,
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "confirm": {
-      console.log(action);
+      const newData = state.data.map((s) => {
+        if (s.name === action.payload.name) {
+          return {
+            ...s,
+            StockLeft: s.StockLeft - 1,
+          };
+        }
+        return s;
+      });
+
       return {
         ...state,
         totalPrice: action.payload.amount + state.totalPrice,
         name: action.payload.opens,
-        totalBackers: state.totalBackers++,
+        totalBackers: state.totalBackers + 1,
+        data: newData,
+      };
+    }
+    case "pledge": {
+      console.log(action);
+      const newData = state.data.map((s) => {
+        if (s.name === action.payload.name) {
+          return {
+            ...s,
+            StockLeft: s.StockLeft - 1,
+          };
+        }
+        return s;
+      });
+
+      return {
+        ...state,
+        totalPrice: Number(action.payload.amount) + state.totalPrice,
+        name: action.payload.opens,
+        totalBackers: state.totalBackers + 1,
+        data: newData,
       };
     }
     case "clearName": {
@@ -31,13 +63,11 @@ function reducer(state, action) {
 }
 
 function MainContextPage({ children }) {
-  const [{ totalPrice, maxPrice, name, totalBackers }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ totalPrice, maxPrice, name, totalBackers, data }, dispatch] =
+    useReducer(reducer, initialState);
   return (
     <CrowdFunding.Provider
-      value={{ maxPrice, totalPrice, name, totalBackers, dispatch }}
+      value={{ maxPrice, totalPrice, name, totalBackers, data, dispatch }}
     >
       {children}
     </CrowdFunding.Provider>

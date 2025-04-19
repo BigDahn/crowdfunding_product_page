@@ -14,7 +14,9 @@ function Modal({ children }) {
   };
   const open = setOpenName;
   return (
-    <ModalContext.Provider value={{ open, close, openName, openingName }}>
+    <ModalContext.Provider
+      value={{ open, close, openName, openingName, setOpenName }}
+    >
       {children}
     </ModalContext.Provider>
   );
@@ -28,15 +30,19 @@ function Open({ children, opens: OpenWindowName }) {
 }
 
 function Window({ children, name }) {
-  const { close, openName, openingName } = useContext(ModalContext);
+  const { close, openName, openingName, setOpenName } =
+    useContext(ModalContext);
 
   const ref = useOutsideClick(close);
   if (name !== openName && name !== openingName) return null;
+  if (openingName) {
+    setOpenName("");
+  }
   return createPortal(
     <main className="fixed inset-0  z-50 flex items-center h-[100vh] ">
       <section
         ref={ref}
-        className="fixed top-[20%] left-[38%]  rounded-md px-[2rem] py-[2rem]  bg-white shadow-2xl"
+        className="fixed top-[10%] left-[30%]  rounded-md px-[2rem] py-[2rem]  bg-white shadow-2xl "
       >
         <div>{cloneElement(children, { onClick: close })}</div>
       </section>
