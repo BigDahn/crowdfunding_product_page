@@ -1,7 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 
+@plugin 'tailwind-scrollbar';
 @theme{
   --font-Commissioner: "Commissioner",san-serif;
 
 }
+ @layer utilities {
+   .scrollbar::-webkit-scrollbar {
+     width: 10px;
+     height: 3px;
+   }
+
+   .scrollbar::-webkit-scrollbar-track {
+     border-radius: 10px;
+     background: #f7f4ed;
+   }
+
+   .scrollbar::-webkit-scrollbar-thumb {
+     background: #3cb4ab;
+     border-radius: 10px;
+     border: 3px solid #f6f7ed;
+   }
+
+   .scrollbar::-webkit-scrollbar-thumb:hover {
+     background: #3cb4ab;
+   }
+ }
+
+

@@ -8,14 +8,8 @@ function ModalContent({ onClick }) {
   const [price, setPrice] = useState();
 
   return (
-    <div className="font-Commissioner max-w-[30rem]  ">
-      <img
-        src="/images/icon-close-modal.svg"
-        className="relative left-[30rem] bottom-2 cursor-pointer "
-        role="button"
-        onClick={() => onClick()}
-      />
-      <main>
+    <div className="font-Commissioner max-w-[30rem] min-h-screen   ">
+      <section className="flex items-start justify-center">
         <div>
           <h3 className="font-bold text-[15px] pb-2">Back this project</h3>
           <p className="text-[11px] text-[#9b9b9b] font-medium font-Commissioner leading-5 ">
@@ -23,7 +17,15 @@ function ModalContent({ onClick }) {
             in the world?
           </p>
         </div>
-        <section className="flex flex-col gap-4 mt-4">
+        <img
+          src="/images/icon-close-modal.svg"
+          className="md:relative md:left-[2rem] md:bottom-2 cursor-pointer  "
+          role="button"
+          onClick={() => onClick()}
+        />
+      </section>
+      <main className="  w-full scrollbar overflow-y-scroll h-[30rem] px-3">
+        <section className="flex flex-col gap-4 mt-4 ">
           <div
             className={`${
               rewardName === "No reward"
@@ -49,8 +51,8 @@ function ModalContent({ onClick }) {
                   products update via email .
                 </p>
                 {rewardName === "No reward" && (
-                  <div className="border-t-1 border-[#9b9b9b] mt-3">
-                    <article className="flex items-center justify-between pt-3">
+                  <div className="border-t-1 border-[#9b9b9b] mt-3 ">
+                    <article className="flex flex-col gap-2  md:flex-row items-center justify-between pt-3">
                       <h5 className="text-[14px] font-bold text-[#9b9b9b]">
                         Enter your pledge
                       </h5>
@@ -59,8 +61,8 @@ function ModalContent({ onClick }) {
                         <div className="flex items-center flex-col ">
                           <input
                             type="number"
-                            defaultValue={0}
-                            min={0}
+                            defaultValue={10}
+                            min={10}
                             className="w-20 text-center font-bold pl-6 h-10 outline-none border border-[#72aaa2] rounded-full"
                             onChange={(e) => setPrice(e.target.value)}
                           />
@@ -79,8 +81,8 @@ function ModalContent({ onClick }) {
                           }}
                           className={`${
                             !price
-                              ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
-                              : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
+                              ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[14px] md:text-[15px] font-Commissioner font-bold px-[20px] py-[10px] md:px-[1.3em] md:py-[0.6em]"
+                              : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[13px] md:text-[15px] font-Commissioner font-bold px-[20px] py-[9px] md:px-[1.3em] md:py-[0.6em]"
                           }`}
                         >
                           continue
@@ -105,7 +107,7 @@ function ModalContent({ onClick }) {
               >
                 <label
                   for={name}
-                  className="flex items-start gap-3 px-4 pt-2 pb-4 cursor-pointer"
+                  className="flex  items-start gap-3 px-4 pt-2 pb-4 cursor-pointer"
                 >
                   <input
                     type="radio"
@@ -117,7 +119,7 @@ function ModalContent({ onClick }) {
                   />
                   <div className="px-3 flex flex-col gap-2">
                     <div className="flex  gap-2   items-center justify-between">
-                      <div className="flex gap-3 items-center">
+                      <div className="flex flex-col gap-3 items-center">
                         <h3
                           className={`${
                             StockLeft < 1
@@ -135,8 +137,8 @@ function ModalContent({ onClick }) {
                       <h2
                         className={`${
                           StockLeft < 1
-                            ? "font-bold text-[23px] flex gap-1 items-start text-[#939393]"
-                            : "font-bold text-[23px] flex gap-1 items-start"
+                            ? "hidden md:font-bold text-[23px] md:flex gap-1 items-start text-[#939393]"
+                            : "hidden md:font-bold text-[23px] md:flex gap-1 items-start"
                         }`}
                       >
                         {StockLeft}
@@ -149,9 +151,21 @@ function ModalContent({ onClick }) {
                     <p className="text-[11.4px]  text-[#9b9b9b] font-medium font-Commissioner leading-5">
                       {info}
                     </p>
+                    <h2
+                      className={`${
+                        StockLeft < 1
+                          ? "md:hidden font-bold text-[23px] flex gap-1 items-start text-[#939393]"
+                          : "md:hidden font-bold text-[23px] flex gap-1 items-start"
+                      }`}
+                    >
+                      {StockLeft}
+                      <span className="text-[9px] text-[#9b9b9b] mt-1">
+                        left
+                      </span>
+                    </h2>
                     {rewardName === name && (
                       <div className="border-t-1 border-[#9b9b9b] mt-3">
-                        <article className="flex items-center justify-between pt-3">
+                        <article className="flex flex-col md:flex-row gap-2 items-center justify-between pt-3">
                           <h5 className="text-[14px] font-bold text-[#9b9b9b]">
                             Enter your pledge
                           </h5>
@@ -180,8 +194,8 @@ function ModalContent({ onClick }) {
                               }}
                               className={`${
                                 !price
-                                  ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
-                                  : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
+                                  ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[13px] md:text-[15px] font-Commissioner font-bold px-[20px] py-[9px] md:px-[1.3em] md:py-[0.6em]"
+                                  : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[15px] md:text-[15px] font-Commissioner font-bold px-[20px] py-[9px] md:px-[1.3em] md:py-[0.6em]"
                               }`}
                             >
                               continue
