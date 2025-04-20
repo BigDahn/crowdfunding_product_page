@@ -8,7 +8,7 @@ function ModalContent({ onClick }) {
   const [price, setPrice] = useState();
 
   return (
-    <div className="font-Commissioner max-w-[30rem] min-h-screen   ">
+    <div className="font-Commissioner max-w-[30rem]    ">
       <section className="flex items-start justify-center">
         <div>
           <h3 className="font-bold text-[15px] pb-2">Back this project</h3>
@@ -24,7 +24,7 @@ function ModalContent({ onClick }) {
           onClick={() => onClick()}
         />
       </section>
-      <main className="  w-full scrollbar overflow-y-scroll h-[30rem] px-3">
+      <main className=" scrollbar overflow-y-scroll h-[30rem] px-4 ">
         <section className="flex flex-col gap-4 mt-4 ">
           <div
             className={`${
@@ -33,7 +33,7 @@ function ModalContent({ onClick }) {
                 : "border rounded-md border-gray-200 flex items-center gap-2  py-3"
             }`}
           >
-            <label className="flex items-start gap-3 px-4 pt-2 pb-4">
+            <label className="flex items-start gap-3 px-2 pt-2 pb-4">
               <input
                 type="radio"
                 name="reward"
@@ -101,13 +101,13 @@ function ModalContent({ onClick }) {
                 key={name}
                 className={`${
                   name === rewardName
-                    ? "border rounded-md border-green-300 flex items-center gap-2 pt-2 pb-3"
+                    ? "border rounded-md border-green-300 flex items-center gap-2 pt-2 pb-3  "
                     : "border rounded-md border-gray-200 flex items-center gap-2 pt-2 pb-3 "
                 }`}
               >
                 <label
                   for={name}
-                  className="flex  items-start gap-3 px-4 pt-2 pb-4 cursor-pointer"
+                  className="flex  items-start gap-3 px-2  pt-2 pb-4 cursor-pointer"
                 >
                   <input
                     type="radio"
@@ -117,9 +117,9 @@ function ModalContent({ onClick }) {
                     onChange={(e) => setRewardName(e.target.value)}
                     className="mt-3"
                   />
-                  <div className="px-3 flex flex-col gap-2">
-                    <div className="flex  gap-2   items-center justify-between">
-                      <div className="flex flex-col gap-3 items-center">
+                  <div className="flex flex-col items-start gap-2 w-[100%] ">
+                    <div className="flex justify-between w-[100%] ">
+                      <div className="flex flex-col md:flex-row gap-2 items-center">
                         <h3
                           className={`${
                             StockLeft < 1
@@ -137,8 +137,8 @@ function ModalContent({ onClick }) {
                       <h2
                         className={`${
                           StockLeft < 1
-                            ? "hidden md:font-bold text-[23px] md:flex gap-1 items-start text-[#939393]"
-                            : "hidden md:font-bold text-[23px] md:flex gap-1 items-start"
+                            ? "hidden md:font-bold text-[23px] md:flex gap-1 md:items-start text-[#939393]"
+                            : "hidden md:font-bold text-[23px] md:flex gap-1 md:items-start "
                         }`}
                       >
                         {StockLeft}
@@ -164,7 +164,7 @@ function ModalContent({ onClick }) {
                       </span>
                     </h2>
                     {rewardName === name && (
-                      <div className="border-t-1 border-[#9b9b9b] mt-3">
+                      <div className="border-t-1 border-[#9b9b9b] mt-3  w-[100%]">
                         <article className="flex flex-col md:flex-row gap-2 items-center justify-between pt-3">
                           <h5 className="text-[14px] font-bold text-[#9b9b9b]">
                             Enter your pledge

@@ -8,7 +8,7 @@ function Slider() {
 
   return (
     <div className="flex flex-col bg-[#ffffff] shadow-lg md:items-center px-4 py-8 ">
-      <div class="rounded-md text-center divide-gray-400 flex flex-col gap-4 divide-y-1 md:divide-y-0 md:flex-row px-4 md:gap-5 md:divide-x-1 items-center py-8 ">
+      <div class="rounded-md text-center divide-gray-400 flex flex-col gap-4 divide-y md:divide-y-0 md:flex-row px-4 md:gap-5 md:divide-x-1 items-center py-8 ">
         <div className="flex flex-col gap-1 pb-3 md:pr-3 ">
           <h3 className="font-bold text-3xl">
             {formatCurrency(totalPrice).replace(".00", "")}

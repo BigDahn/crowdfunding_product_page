@@ -39,10 +39,10 @@ function Window({ children, name }) {
     setOpenName("");
   }
   return createPortal(
-    <main className="fixed inset-0 w-[80%] justify-center md:w-[100%]   m-auto z-50 flex items-center h-[100vh]  ">
+    <main className="fixed inset-0 w-[80%] justify-center   m-auto z-50 flex items-center h-[100vh]  ">
       <section
         ref={ref}
-        className="relative top-[10%] flex items-center m-auto justify-center  rounded-md px-[2rem] py-[2rem]  bg-white shadow-2xl "
+        className="relative top-[10%] flex items-center m-auto justify-center  rounded-md px-[2rem] py-[2rem]   bg-white shadow-2xl "
       >
         <div>{cloneElement(children, { onClick: close })}</div>
       </section>

@@ -11,6 +11,7 @@ const initialState = {
   totalBackers: 5007,
   data: data,
   bookmarked: false,
+  isSidebarOpen: false,
 };
 
 function reducer(state, action) {
@@ -66,12 +67,26 @@ function reducer(state, action) {
         name: "",
       };
     }
+    case "sidebar": {
+      return {
+        ...state,
+        isSidebarOpen: !state.isSidebarOpen,
+      };
+    }
   }
 }
 
 function MainContextPage({ children }) {
   const [
-    { totalPrice, maxPrice, name, totalBackers, data, bookmarked },
+    {
+      totalPrice,
+      maxPrice,
+      name,
+      totalBackers,
+      data,
+      bookmarked,
+      isSidebarOpen,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   return (
@@ -83,6 +98,7 @@ function MainContextPage({ children }) {
         totalBackers,
         data,
         bookmarked,
+        isSidebarOpen,
         dispatch,
       }}
     >
