@@ -17,7 +17,13 @@ function Pledges() {
             className="border border-gray-200 rounded-md flex flex-col px-6 py-4 gap-4"
           >
             <div className="flex flex-col gap-2  md:flex-row md:justify-between md:items-center">
-              <h3 className="font-bold text-[13px] font-Commissioner">
+              <h3
+                className={`${
+                  StockLeft < 1
+                    ? "font-bold text-[13px] font-Commissioner text-[#8f8f8f] "
+                    : "font-bold text-[13px] font-Commissioner"
+                }`}
+              >
                 {name}
               </h3>
               <h6 className="text-[11px] text-[#73b9b0] font-medium">
@@ -44,7 +50,7 @@ function Pledges() {
                 className={`${
                   StockLeft < 1
                     ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]"
-                    : "rounded-full bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em]"
+                    : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] text-white text-[9px] font-Commissioner font-bold px-[3.4em] py-[1.3em] md:px-[15px] md:py-[0.7em] cursor-pointer"
                 }`}
               >
                 {StockLeft > 1 ? " Select Reward" : "Out of stock"}

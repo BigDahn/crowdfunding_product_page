@@ -15,7 +15,7 @@ function ConfirmationBox({ onClick }) {
       </p>
       <button
         onClick={HandleConfirmBox}
-        className="rounded-full bg-[#157a74] px-6 text-white font-bold py-2 cursor-pointer"
+        className="rounded-full bg-[#3cb4ab] hover:bg-[#157a74] px-6 text-white font-bold py-2 cursor-pointer"
       >
         Get it!
       </button>

@@ -10,6 +10,7 @@ const initialState = {
   name: "",
   totalBackers: 5007,
   data: data,
+  bookmarked: false,
 };
 
 function reducer(state, action) {
@@ -53,6 +54,12 @@ function reducer(state, action) {
         data: newData,
       };
     }
+    case "bookmark": {
+      return {
+        ...state,
+        bookmarked: !state.bookmarked,
+      };
+    }
     case "clearName": {
       return {
         ...state,
@@ -63,11 +70,21 @@ function reducer(state, action) {
 }
 
 function MainContextPage({ children }) {
-  const [{ totalPrice, maxPrice, name, totalBackers, data }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { totalPrice, maxPrice, name, totalBackers, data, bookmarked },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   return (
     <CrowdFunding.Provider
-      value={{ maxPrice, totalPrice, name, totalBackers, data, dispatch }}
+      value={{
+        maxPrice,
+        totalPrice,
+        name,
+        totalBackers,
+        data,
+        bookmarked,
+        dispatch,
+      }}
     >
       {children}
     </CrowdFunding.Provider>

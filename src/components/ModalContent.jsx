@@ -15,7 +15,7 @@ function ModalContent({ onClick }) {
         role="button"
         onClick={() => onClick()}
       />
-      <main className="overflow-x-scroll">
+      <main>
         <div>
           <h3 className="font-bold text-[15px] pb-2">Back this project</h3>
           <p className="text-[11px] text-[#9b9b9b] font-medium font-Commissioner leading-5 ">
@@ -43,11 +43,52 @@ function ModalContent({ onClick }) {
                 <h3 className="font-bold text-[13px] font-Commissioner hover:text-[#72aaa2]">
                   Pledge with no reward
                 </h3>
-                <p className="text-[11.4px] text-[#9b9b9b] font-medium font-Commissioner leading-5 ">
+                <p className="text-[11.4px] text-[#9b9b9b] font-medium font-Commissioner leading-5 pb-1 ">
                   Choose to support us without reward if you simply believe in
                   our project. As a backer ,you will be signed to receive
                   products update via email .
                 </p>
+                {rewardName === "No reward" && (
+                  <div className="border-t-1 border-[#9b9b9b] mt-3">
+                    <article className="flex items-center justify-between pt-3">
+                      <h5 className="text-[14px] font-bold text-[#9b9b9b]">
+                        Enter your pledge
+                      </h5>
+                      <div className="flex items-center gap-2">
+                        <BiDollar className="relative left-9.5 top-[1px]" />
+                        <div className="flex items-center flex-col ">
+                          <input
+                            type="number"
+                            defaultValue={0}
+                            min={0}
+                            className="w-20 text-center font-bold pl-6 h-10 outline-none border border-[#72aaa2] rounded-full"
+                            onChange={(e) => setPrice(e.target.value)}
+                          />
+                        </div>
+                        <button
+                          disabled={!price}
+                          onClick={() => {
+                            dispatch({
+                              type: "pledge",
+                              payload: {
+                                amount: price,
+                                opens: "reward",
+                                name: rewardName,
+                              },
+                            });
+                          }}
+                          className={`${
+                            !price
+                              ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
+                              : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
+                          }`}
+                        >
+                          continue
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                )}
               </div>
             </label>
           </div>
@@ -140,7 +181,7 @@ function ModalContent({ onClick }) {
                               className={`${
                                 !price
                                   ? "rounded-full bg-[#9b9b9b] cursor-not-allowed text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
-                                  : "rounded-full bg-[#157a74] cursor-pointer text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
+                                  : "rounded-full bg-[#3cb4ab] hover:bg-[#157a74] cursor-pointer text-white text-[15px] font-Commissioner font-bold px-[4em] py-[3em] md:px-[1.3em] md:py-[0.6em]"
                               }`}
                             >
                               continue

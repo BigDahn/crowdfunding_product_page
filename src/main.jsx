@@ -10,6 +10,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <MainContextPage>
       <App />
     </MainContextPage>
-    {console.log(document.getElementById("root"))}
   </StrictMode>
 );
