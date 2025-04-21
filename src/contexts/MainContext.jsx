@@ -23,6 +23,7 @@ function reducer(state, action) {
 
         name: action.payload.opens,
         value: action.payload.name,
+        isSidebarOpen: false,
       };
     }
     case "pledge": {
@@ -43,6 +44,7 @@ function reducer(state, action) {
         value: action.payload.name,
         totalBackers: state.totalBackers + 1,
         data: newData,
+        isSidebarOpen: false,
       };
     }
     case "bookmark": {
@@ -55,6 +57,12 @@ function reducer(state, action) {
       return {
         ...state,
         name: "",
+      };
+    }
+    case "closeSidebar": {
+      return {
+        ...state,
+        isSidebarOpen: false,
       };
     }
     case "sidebar": {

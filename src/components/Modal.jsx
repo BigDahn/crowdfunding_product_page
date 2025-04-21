@@ -7,12 +7,16 @@ import { useCrowdfund } from "../contexts/MainContext";
 const ModalContext = createContext();
 function Modal({ children }) {
   const [openName, setOpenName] = useState("");
-  let { name: openingName, dispatch } = useCrowdfund();
+  const { name: openingName, dispatch } = useCrowdfund();
+
+  console.log(openingName);
 
   const close = () => {
     setOpenName(""), dispatch({ type: "clearName" });
   };
-  const open = setOpenName;
+  const open = (d) => {
+    setOpenName(d), dispatch({ type: "closeSidebar" });
+  };
   return (
     <ModalContext.Provider
       value={{ open, close, openName, openingName, setOpenName }}
@@ -25,19 +29,18 @@ function Modal({ children }) {
 function Open({ children, opens: OpenWindowName }) {
   const { open } = useContext(ModalContext);
   return cloneElement(children, {
-    onClick: () => open(OpenWindowName),
+    onClick: () => {
+      open(OpenWindowName);
+    },
   });
 }
 
 function Window({ children, name }) {
-  const { close, openName, openingName, setOpenName } =
-    useContext(ModalContext);
-
+  const { close, openName, openingName } = useContext(ModalContext);
   const ref = useOutsideClick(close);
+
   if (name !== openName && name !== openingName) return null;
-  if (openingName) {
-    setOpenName("");
-  }
+
   return createPortal(
     <main className="fixed inset-0 w-[80%] justify-center   m-auto z-50 flex items-center h-[100vh]  ">
       <section

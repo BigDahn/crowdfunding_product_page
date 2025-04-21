@@ -1,10 +1,14 @@
+import React from "react";
+import Modal from "./Modal";
+import ModalContent from "./ModalContent";
+import ConfirmationBox from "./ConfirmationBox";
 import { useCrowdfund } from "../contexts/MainContext";
 
 function Pledges() {
   const { dispatch, data } = useCrowdfund();
 
   return (
-    <>
+    <Modal>
       {data.map((s) => {
         const { name, pledge, info, StockLeft } = s;
         return (
@@ -55,7 +59,11 @@ function Pledges() {
           </article>
         );
       })}
-    </>
+
+      <Modal.Window name="reward">
+        <ConfirmationBox />
+      </Modal.Window>
+    </Modal>
   );
 }
 
