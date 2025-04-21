@@ -3,7 +3,7 @@ import Pledges from "./Pledges";
 
 function About() {
   return (
-    <div class="bg-[#ffffff] rounded-md  shadow-lg px-3 md:px-10 py-8 flex flex-col gap-6">
+    <div className="bg-[#ffffff] rounded-md  shadow-lg px-3 md:px-10 py-8 flex flex-col gap-6">
       <h3 className="text-[16px] font-bold font-Commissioner">
         About this project
       </h3>

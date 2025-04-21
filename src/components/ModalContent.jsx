@@ -3,8 +3,8 @@ import { useCrowdfund } from "../contexts/MainContext";
 import { BiDollar } from "react-icons/bi";
 
 function ModalContent({ onClick }) {
-  const { data, dispatch } = useCrowdfund();
-  const [rewardName, setRewardName] = useState();
+  const { data, dispatch, value } = useCrowdfund();
+  const [rewardName, setRewardName] = useState(value);
   const [price, setPrice] = useState();
 
   return (
@@ -106,13 +106,15 @@ function ModalContent({ onClick }) {
                 }`}
               >
                 <label
-                  for={name}
+                  htmlFor={name}
                   className="flex  items-start gap-3 px-2  pt-2 pb-4 cursor-pointer"
                 >
                   <input
                     type="radio"
-                    value={name}
                     name="reward"
+                    checked={rewardName === name}
+                    value={name}
+                    // checked={name === value || rewardName}
                     disabled={StockLeft < 1}
                     onChange={(e) => setRewardName(e.target.value)}
                     className="mt-3"

@@ -12,31 +12,20 @@ const initialState = {
   data: data,
   bookmarked: false,
   isSidebarOpen: false,
+  value: "",
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "confirm": {
-      const newData = state.data.map((s) => {
-        if (s.name === action.payload.name) {
-          return {
-            ...s,
-            StockLeft: s.StockLeft - 1,
-          };
-        }
-        return s;
-      });
-
       return {
         ...state,
-        totalPrice: action.payload.amount + state.totalPrice,
+
         name: action.payload.opens,
-        totalBackers: state.totalBackers + 1,
-        data: newData,
+        value: action.payload.name,
       };
     }
     case "pledge": {
-      console.log(action);
       const newData = state.data.map((s) => {
         if (s.name === action.payload.name) {
           return {
@@ -51,6 +40,7 @@ function reducer(state, action) {
         ...state,
         totalPrice: Number(action.payload.amount) + state.totalPrice,
         name: action.payload.opens,
+        value: action.payload.name,
         totalBackers: state.totalBackers + 1,
         data: newData,
       };
@@ -85,6 +75,7 @@ function MainContextPage({ children }) {
       totalBackers,
       data,
       bookmarked,
+      value,
       isSidebarOpen,
     },
     dispatch,
@@ -94,6 +85,7 @@ function MainContextPage({ children }) {
       value={{
         maxPrice,
         totalPrice,
+        value,
         name,
         totalBackers,
         data,

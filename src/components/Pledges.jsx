@@ -1,14 +1,10 @@
-import React from "react";
-import Modal from "./Modal";
-import ModalContent from "./ModalContent";
-import ConfirmationBox from "./ConfirmationBox";
 import { useCrowdfund } from "../contexts/MainContext";
 
 function Pledges() {
   const { dispatch, data } = useCrowdfund();
 
   return (
-    <Modal>
+    <>
       {data.map((s) => {
         const { name, pledge, info, StockLeft } = s;
         return (
@@ -27,7 +23,7 @@ function Pledges() {
                 {name}
               </h3>
               <h6 className="text-[11px] text-[#73b9b0] font-medium">
-                Pledge $25 or more
+                Pledge ${pledge} or more
               </h6>
             </div>
             <p className="text-[10px] text-[#9b9b9b] font-medium font-Commissioner leading-5">
@@ -43,7 +39,7 @@ function Pledges() {
                 onClick={() =>
                   dispatch({
                     type: "confirm",
-                    payload: { amount: pledge, opens: "reward", name: name },
+                    payload: { opens: "project", name: name },
                   })
                 }
                 disabled={StockLeft < 1}
@@ -59,11 +55,7 @@ function Pledges() {
           </article>
         );
       })}
-
-      <Modal.Window name="reward">
-        <ConfirmationBox />
-      </Modal.Window>
-    </Modal>
+    </>
   );
 }
 

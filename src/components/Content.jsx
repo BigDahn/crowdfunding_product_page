@@ -7,7 +7,7 @@ function Content() {
   const { dispatch, bookmarked } = useCrowdfund();
   return (
     <Modal>
-      <div class="bg-[#ffffff] shadow-lg   rounded-md  ">
+      <div className="bg-[#ffffff] shadow-lg   rounded-md  ">
         <img
           src="/images/logo-mastercraft.svg"
           className="flex items-center m-auto relative bottom-4.5 h-10"

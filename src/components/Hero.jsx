@@ -1,6 +1,4 @@
 import React from "react";
-import Modal from "./Modal";
-import ModalContent from "./ModalContent";
 import SidebarModal from "./SidebarModal";
 import { useCrowdfund } from "../contexts/MainContext";
 
