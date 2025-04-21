@@ -57,6 +57,7 @@ function reducer(state, action) {
       return {
         ...state,
         name: "",
+        value: "",
       };
     }
     case "closeSidebar": {
